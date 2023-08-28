@@ -269,3 +269,82 @@ public class Leave {
 }
 
 
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+<title>JavaScript Calculator</title>
+<style>
+    h1{
+        text-align:center;
+        padding:23px;
+        background: color #ecf0ec;
+        color:red;
+    }
+    #clear{
+        width:500 px;
+        color:white;
+        border:3px solid red;
+        border-radius:3px;
+        padding:20px;
+        background-color:black;
+    }
+    .formstyle
+    {
+        width:300px;
+        height:530px;
+        margin:auto;
+        border:3px solid red
+    }
+    
+    input
+    {
+     width:20px;
+     background-color:black;
+     color:white;
+     border:3px solid red;
+     border-radius:5 px;
+     padding:26px;
+     margin:5px;
+     font-size:15px;
+    }
+
+    #calc{
+        width:250px;
+        border:5px solid red;
+        border-radius:3px;
+        padding:20px;
+        margin:auto;
+    }
+</style>
+    </head>
+    <body>
+        <h1>Calculator In JavaScript</h1>
+        <div class="formstyle">
+        <form name="form9">
+        <input id="calc" type="text" name="answer"><br><br>
+        <input type="button" value="DEl" onclick="form9.answer.value=form9.answer.value.slice(0,-1)">
+        <input type="button" value="7" onclick="form9.answer.value+='7'">
+        <input type="button" value="8" onclick="form9.answer.value+='8'">
+        <input type="button" value="9" onclick="form9.answer.value+='9'">
+        <input type="button" value="+" onclick="form9.answer.value+='+'">
+        <input type="button" value="4" onclick="form9.answer.value+='4'">
+        <input type="button" value="5" onclick="form9.answer.value+='5'">
+        <input type="button" value="6" onclick="form9.answer.value+='6'">
+        <input type="button" value="-" onclick="form9.answer.value+='-'">
+        <input type="button" value="1" onclick="form9.answer.value+='1'">
+        <input type="button" value="2" onclick="form9.answer.value+='2'">
+        <input type="button" value="3" onclick="form9.answer.value+='3'">
+        <input type="button" value="*" onclick="form9.answer.value+='*'">
+        <input type="button" value="/" onclick="form9.answer.value+='/'">
+        <input type="button" value="0" onclick="form9.answer.value+='0'">
+        <input type="button" value="." onclick="form9.answer.value+='.'">
+        <input type="button" value="=" onclick="form9.answer.value=eval(form9.answer.value)">
+        
+        <input type="button" value="Clr" onclick="form9.answer.value=''"id="clear">
+        <br>
+
+        </form>
+        </div>
+    </body>
+</html>
+
