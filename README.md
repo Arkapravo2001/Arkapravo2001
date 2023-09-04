@@ -348,3 +348,83 @@ public class Leave {
     </body>
 </html>
 
+
+using System;
+namespace Prj1Day1Con
+{
+    public interface ImyIterator
+    {
+        int next();
+        bool hasNext();
+        void begin();
+    }
+    public class myCollection
+    {
+        private int[] arr = new int[10000];
+        private int tos = -1;
+        private int nav = -1;
+        public void add(int i)
+        {
+            tos = tos + 1;
+            arr[tos] = i;
+        }
+        public class myIterator : ImyIterator
+        {
+            private myCollection collection;
+            public myIterator(myCollection collection)
+            {
+                this.collection = collection;
+            }
+           
+            public void begin()
+            {
+                if (collection.tos > 0)
+                    collection.nav = 0;
+            }
+            public bool hasNext()
+            {
+                return collection.nav <= collection.tos;
+            }
+            public int next()
+            {
+                if (collection.nav <= collection.tos && collection.tos != -1)
+                {
+                    int value = collection.arr[collection.nav];
+                    collection.nav++;
+                    return value;
+                }
+                return -1;
+            }
+        }
+        public myIterator GetIterator()
+        {
+            return new myIterator(this);
+        }
+    }
+    internal class AbstractEx
+    {
+        static void Main(string[] args)
+        {
+            myCollection c1 = new myCollection();
+            
+            c1.add(10);
+            c1.add(203);
+            c1.add(9);
+            c1.add(49);
+            c1.add(100);
+            ImyIterator it = c1.GetIterator();
+            it.begin();
+            while (it.hasNext())
+            {
+                int val = it.next();
+                if (val != -1)
+                {
+                    Console.WriteLine("Current Element is "+val);
+                }
+                else Console.WriteLine("No more elements to iterate");
+            }
+        }
+    }
+}
+
+
