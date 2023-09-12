@@ -539,4 +539,107 @@ class Program
         // Implement StreamReader and StreamWriter functionality here
     }
 }
+using System;
+using System.IO;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        if (args.Length != 1)
+        {
+            Console.WriteLine("Usage: program.exe <filename.cs>");
+            return;
+        }
+
+        string fileName = args[0];
+
+        if (!File.Exists(fileName))
+        {
+            Console.WriteLine("File not found.");
+            return;
+        }
+
+        if (Path.GetExtension(fileName).ToLower() != ".cs")
+        {
+            Console.WriteLine("Invalid file extension. Only .cs files are supported.");
+            return;
+        }
+
+        string fileContents = File.ReadAllText(fileName);
+
+        if (fileContents.Contains("Main(string[] args)") || fileContents.Contains("Main()"))
+        {
+            string newFileName = Path.GetFileNameWithoutExtension(fileName);
+            string newFileExtension = ".myexe";
+            
+            if (!fileContents.Contains("Main(string[] args)"))
+            {
+                newFileExtension = ".mydll";
+            }
+
+            string newFilePath = newFileName + newFileExtension;
+            
+            File.WriteAllText(newFilePath, fileContents);
+
+            Console.WriteLine("Compiled successfully. Output file: " + newFilePath);
+        }
+        else
+        {
+            Console.WriteLine("Main function not found. Compilation aborted.");
+        }
+    }
+}
+
+using System;
+using System.IO;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        if (args.Length != 1)
+        {
+            Console.WriteLine("Usage: program.exe <filename.cs>");
+            return;
+        }
+
+        string fileName = args[0];
+
+        if (!File.Exists(fileName))
+        {
+            Console.WriteLine("File not found.");
+            return;
+        }
+
+        if (Path.GetExtension(fileName).ToLower() != ".cs")
+        {
+            Console.WriteLine("Invalid file extension. Only .cs files are supported.");
+            return;
+        }
+
+        string fileContents = File.ReadAllText(fileName);
+
+        if (fileContents.Contains("Main(string[] args)") || fileContents.Contains("Main()"))
+        {
+            string newFileName = Path.GetFileNameWithoutExtension(fileName);
+            string newFileExtension = ".myexe";
+            
+            if (!fileContents.Contains("Main(string[] args)"))
+            {
+                newFileExtension = ".mydll";
+            }
+
+            string newFilePath = newFileName + newFileExtension;
+            
+            File.WriteAllText(newFilePath, fileContents);
+
+            Console.WriteLine("Compiled successfully. Output file: " + newFilePath);
+        }
+        else
+        {
+            Console.WriteLine("Main function not found. Compilation aborted.");
+        }
+    }
+}
 
