@@ -427,4 +427,116 @@ namespace Prj1Day1Con
     }
 }
 
+using System;
+using System.IO;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        while (true)
+        {
+            Console.WriteLine("\nMain Menu:");
+            Console.WriteLine("1. Using File");
+            Console.WriteLine("2. Using FileStream");
+            Console.WriteLine("3. Using StreamReader and StreamWriter");
+            Console.WriteLine("4. Exit");
+
+            string choice = Console.ReadLine();
+
+            switch (choice)
+            {
+                case "1":
+                    FileMenu();
+                    break;
+                case "2":
+                    FileStreamMenu();
+                    break;
+                case "3":
+                    StreamReaderStreamWriterMenu();
+                    break;
+                case "4":
+                    return;
+                default:
+                    Console.WriteLine("Invalid choice. Please select a valid option.");
+                    break;
+            }
+        }
+    }
+
+    static void FileMenu()
+    {
+        string filePath = "file.txt";
+        string[] fileContent = new string[0];
+
+        while (true)
+        {
+            Console.WriteLine("\nFile Menu:");
+            Console.WriteLine("1. Write to File");
+            Console.WriteLine("2. Read from File");
+            Console.WriteLine("3. Go to Main Menu");
+
+            string choice = Console.ReadLine();
+
+            switch (choice)
+            {
+                case "1":
+                    Console.WriteLine("Enter text to write to the file (type 'done' to stop):");
+                    string input = Console.ReadLine();
+                    while (!input.ToLower().Equals("done"))
+                    {
+                        Array.Resize(ref fileContent, fileContent.Length + 1);
+                        fileContent[fileContent.Length - 1] = input;
+                        input = Console.ReadLine();
+                    }
+
+                    File.WriteAllLines(filePath, fileContent);
+                    Console.WriteLine("Text written to file.");
+                    break;
+                case "2":
+                    try
+                    {
+                        string[] lines = File.ReadAllLines(filePath);
+                        Console.WriteLine("Number of words: " + CountWords(lines));
+                        Console.WriteLine("File Content:");
+                        foreach (string line in lines)
+                        {
+                            Console.WriteLine(line);
+                        }
+                    }
+                    catch (FileNotFoundException)
+                    {
+                        Console.WriteLine("File not found. Please write to the file first.");
+                    }
+                    break;
+                case "3":
+                    return;
+                default:
+                    Console.WriteLine("Invalid choice. Please select a valid option.");
+                    break;
+            }
+        }
+    }
+
+    static int CountWords(string[] lines)
+    {
+        int wordCount = 0;
+        foreach (string line in lines)
+        {
+            string[] words = line.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            wordCount += words.Length;
+        }
+        return wordCount;
+    }
+
+    static void FileStreamMenu()
+    {
+        // Implement FileStream functionality here
+    }
+
+    static void StreamReaderStreamWriterMenu()
+    {
+        // Implement StreamReader and StreamWriter functionality here
+    }
+}
 
