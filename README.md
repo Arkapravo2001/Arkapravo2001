@@ -643,3 +643,63 @@ class Program
     }
 }
 
+[16/09, 14:20] Arkapravo Ganguly: using System;
+using System.Threading.Tasks;
+
+class Program
+{
+    static async Task Main(string[] args)
+    {
+        Console.WriteLine("Start of Main");
+
+        // Start two asynchronous tasks
+        Task task1 = PrintNumbersAsync("Task 1", 5);
+        Task task2 = PrintNumbersAsync("Task 2", 5);
+
+        // Wait for both tasks to complete
+        await Task.WhenAll(task1, task2);
+
+        Console.WriteLine("End of Main");
+    }
+
+    static async Task PrintNumbersAsync(string taskName, int count)
+    {
+        for (int i = 1; i <= count; i++)
+        {
+            Console.WriteLine($"{taskName}: {i}");
+            await Task.Delay(100); // Simulate some asynchronous work
+        }
+    }
+}
+[16/09, 14:20] Arkapravo Ganguly: using System;
+using System.Threading;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Start of Main");
+
+        // Create and start two threads
+        Thread thread1 = new Thread(() => PrintNumbers("Thread 1", 5));
+        Thread thread2 = new Thread(() => PrintNumbers("Thread 2", 5));
+
+        thread1.Start();
+        thread2.Start();
+
+        // Wait for both threads to complete
+        thread1.Join();
+        thread2.Join();
+
+        Console.WriteLine("End of Main");
+    }
+
+    static void PrintNumbers(string threadName, int count)
+    {
+        for (int i = 1; i <= count; i++)
+        {
+            Console.WriteLine($"{threadName}: {i}");
+            Thread.Sleep(100); // Simulate some work
+        }
+    }
+}
