@@ -703,3 +703,24 @@ class Program
         }
     }
 }
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+class Program
+{
+    static void Main()
+    {
+        List<int> numbers = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+        // Use TLP to calculate the square of each number concurrently
+        Parallel.ForEach(numbers, num =>
+        {
+            int square = num * num;
+            Console.WriteLine($"The square of {num} is {square}");
+        });
+
+        Console.ReadLine();
+    }
+}
+
