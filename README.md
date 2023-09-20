@@ -723,4 +723,48 @@ class Program
         Console.ReadLine();
     }
 }
+CREATE FUNCTION ChkPrime (@num INT)
+RETURNS NVARCHAR(50)
+AS
+BEGIN
+    DECLARE @result NVARCHAR(50)
+    DECLARE @is_prime INT
+    SET @is_prime = 1
+    
+    IF @num < 2
+    BEGIN
+        SET @result = 'Not Prime'
+    END
+    ELSE
+    BEGIN
+        DECLARE @i INT
+        SET @i = 2
+        WHILE @i <= SQRT(@num)
+        BEGIN
+            IF @num % @i = 0
+            BEGIN
+                SET @is_prime = 0
+                BREAK
+            END
+            SET @i = @i + 1
+        END
+        
+        IF @is_prime = 1
+        BEGIN
+            IF @num % 2 = 0
+                SET @result = 'Even Prime'
+            ELSE
+                SET @result = 'Odd Prime'
+        END
+        ELSE
+        BEGIN
+            IF @num % 2 = 0
+                SET @result = 'Even'
+            ELSE
+                SET @result = 'Odd'
+        END
+    END
+    
+    RETURN @result
+END
 
