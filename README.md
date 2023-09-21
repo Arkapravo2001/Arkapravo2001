@@ -768,3 +768,23 @@ BEGIN
     RETURN @result
 END
 
+CREATE PROCEDURE PrintNumbersDescending
+(
+    @startNumber INT
+)
+AS
+BEGIN
+    IF @startNumber <= 0
+    BEGIN
+        PRINT 'Input number must be greater than 0.';
+        RETURN;
+    END
+    
+    DECLARE @currentNumber INT = @startNumber;
+    
+    WHILE @currentNumber >= 1
+    BEGIN
+        PRINT @currentNumber;
+        SET @currentNumber = @currentNumber - 1;
+    END
+END;
