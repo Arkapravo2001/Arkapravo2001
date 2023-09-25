@@ -788,3 +788,52 @@ BEGIN
         SET @currentNumber = @currentNumber - 1;
     END
 END;
+using System;
+using System.Data.SqlClient;
+
+namespace LoginApp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string connectionString = "Your_Connection_String_here"; // Replace with your SQL Server connection string
+
+            Console.Write("Enter username: ");
+            string username = Console.ReadLine();
+
+            Console.Write("Enter password: ");
+            string password = Console.ReadLine();
+
+            bool loginSuccessful = CheckLogin(connectionString, username, password);
+
+            if (loginSuccessful)
+            {
+                Console.WriteLine("Login successful");
+            }
+            else
+            {
+                Console.WriteLine("Login NOT successful");
+            }
+        }
+
+        static bool CheckLogin(string connectionString, string username, string password)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "SELECT COUNT(*) FROM Login WHERE uname = @uname AND passwd = @passwd";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@uname", username);
+                    command.Parameters.AddWithValue("@passwd", password);
+
+                    int count = (int)command.ExecuteScalar();
+
+                    return count > 0;
+                }
+            }
+        }
+    }
+}
