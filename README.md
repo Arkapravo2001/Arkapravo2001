@@ -879,4 +879,12 @@ namespace Day30MVC.Models
     }
 }
 
+Provide a Menu with buttons for : Add a new Student, Update an existing student, delete an existing Student, display the list of students, search a student according to Id, Search the group of students according to criteria as mentioned below.
+
+Prepare an MVC project for Student class and StdList class
+Add Views which submits a new Student data to the controller of Student which adds student data to the list of stds and returns the fresh list in JSON format.
+Provide link to each page in each view
+Student{id, name, course, duration in years, year of enrollment, fees}
+Provide search according to ID, course, name, duration, year, fees range.
+
 
