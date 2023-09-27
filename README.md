@@ -887,4 +887,32 @@ Provide link to each page in each view
 Student{id, name, course, duration in years, year of enrollment, fees}
 Provide search according to ID, course, name, duration, year, fees range.
 
+@model List<Employee>
+
+<h2>Search Results</h2>
+
+@if (Model.Count == 0)
+{
+    <p>No results found.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var employee in Model)
+            {
+                <tr>
+                    <td>@employee.name</td>
+                    <td>@employee.ID</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
 
