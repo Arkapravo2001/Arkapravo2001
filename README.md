@@ -935,3 +935,23 @@ Else the pages should be empty with link to login page
 Page 6 : Logout page:
 Refresh the cookie for login credentials and delete the username and password
 Provide a link to login page
+
+
+public class User
+{
+    public string Username { get; set; }
+    public string Password { get; set; }
+}
+
+public static class UserRepository
+{
+    private static List<User> users = new List<User>
+    {
+        new User { Username = "user1", Password = "password1" }
+    };
+
+    public static User GetUser(string username)
+    {
+        return users.FirstOrDefault(u => u.Username == username);
+    }
+}
