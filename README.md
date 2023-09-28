@@ -955,3 +955,102 @@ public static class UserRepository
         return users.FirstOrDefault(u => u.Username == username);
     }
 }
+
+
+using System.Collections.Generic;
+using System;
+
+namespace Day30MVC.Models
+{
+    public class EmployeeList
+    {
+        public List<Employee> emps = new List<Employee>();
+        public EmployeeList(List<Employee> emps) { this.emps = emps; }
+        public EmployeeList(Employee emp) { this.emps.Add(emp); }
+        public EmployeeList()
+        {
+            this.AddEmp(new Employee("abc", 101));
+            this.AddEmp(new Employee("xyz", 102));
+            this.AddEmp(new Employee("abcxyz", 103));
+        }
+        public void AddEmp(Employee emp) { this.emps.Add(emp); }
+        public void DispEmp()
+        {
+            foreach (Employee e in emps)
+            {
+                Console.WriteLine(e);
+            }
+        }
+        public Employee getEmp(string name)
+        {
+            Employee e = new Employee("default", 100);
+            foreach (Employee ee in emps)
+            {
+                if (ee.name.Equals(name))
+                {
+                    e = ee;
+                }
+            }
+
+            Employee e2 = emps.Find(ee => ee.name.Equals(name));
+            return e;
+        }
+    }
+}
+namespace Day30MVC.Models
+{
+    public class Employee
+    {
+        public string name { get; set; }
+        public int id { get; set; }
+
+        public Employee(string name, int id)
+        {
+            this.name = name;
+            this.id = id;
+        }
+
+        public Employee() { }
+
+        public override string ToString()
+        {
+            return "\nEmp: " + name + " with id: " + id;
+        }
+    }
+}
+using Day30MVC.Models;
+using Microsoft.AspNetCore.Mvc;
+
+namespace Day30MVC.Controllers
+{
+    public class EmployeeController : Controller
+    {
+        EmployeeList emps = new EmployeeList();
+        public IActionResult Index()
+        {
+            return View();
+        }
+        public IActionResult WelcomeEmp(string name)
+        {
+            TempData["Emp"] = emps.getEmp(name);
+            return View();
+        }
+        public IActionResult WelcomeEmp2(string name)
+        {
+            TempData["EmpName"] = name;
+            return View();
+        }
+        public IActionResult ListEmp()
+        {
+            return View(emps.emps);
+        }
+
+        public JsonResult ListEmp2()
+        {
+            return Json(emps.emps);
+        }
+
+    }
+}
+
+
