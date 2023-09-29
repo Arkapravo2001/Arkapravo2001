@@ -1053,4 +1053,94 @@ namespace Day30MVC.Controllers
     }
 }
 
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
+public class MCQController : Controller
+{
+    public IActionResult Index()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public IActionResult StartTest(string name)
+    {
+        // Initialize cookies for questions
+        Response.Cookies.Append("01", "0");
+        Response.Cookies.Append("02", "0");
+        Response.Cookies.Append("03", "0");
+
+        // Redirect to the first question
+        return RedirectToAction("MCQ1");
+    }
+
+    public IActionResult MCQ1()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public IActionResult MCQ1(string ans)
+    {
+        if (Request.Cookies["01"] == "0" && ans == "mo")
+        {
+            Response.Cookies.Append("01", "10");
+        }
+        return RedirectToAction("MCQ2");
+    }
+
+    public IActionResult MCQ2()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public IActionResult MCQ2(string ans)
+    {
+        if (Request.Cookies["02"] == "0" && ans == "Cool")
+        {
+            Response.Cookies.Append("02", "10");
+        }
+        return RedirectToAction("MCQ3");
+    }
+
+    public IActionResult MCQ3()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public IActionResult MCQ3(string ans)
+    {
+        if (Request.Cookies["03"] == "0" && ans == "Yes")
+        {
+            Response.Cookies.Append("03", "10");
+        }
+        return RedirectToAction("MCQ4");
+    }
+
+    public IActionResult MCQ4()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public IActionResult MCQ4(string ans)
+    {
+        if (Request.Cookies["04"] == "0" && ans == "No")
+        {
+            Response.Cookies.Append("04", "10");
+        }
+        return RedirectToAction("Result");
+    }
+
+    public IActionResult Result()
+    {
+        // Convert cookie values to integers and calculate the result
+        int result = int.Parse(Request.Cookies["01"]) + int.Parse(Request.Cookies["02"]) + int.Parse(Request.Cookies["03"]) + int.Parse(Request.Cookies["04"]);
+        ViewData["res"] = result;
+
+        return View();
+    }
+}
