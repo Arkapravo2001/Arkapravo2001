@@ -1,5 +1,40 @@
 - 👋 Hi, I’m @Arkapravo2001
 
+public class QuestionList
+{
+    private List<Question> Questions { get; set; }
+
+    public QuestionList()
+    {
+        // Initialize your list of questions (default 10 questions)
+        Questions = new List<Question>
+        {
+            new Question
+            {
+                QID = 1,
+                Ques = "What is the capital of France?",
+                Option1 = "London",
+                Option2 = "Paris",
+                Option3 = "Berlin",
+                Option4 = "Madrid",
+                Ans = "Paris"
+            },
+            new Question
+            {
+                QID = 2,
+                Ques = "Which planet is known as the Red Planet?",
+                Option1 = "Mars",
+                Option2 = "Venus",
+                Option3 = "Jupiter",
+                Option4 = "Saturn",
+                Ans = "Mars"
+            },
+            // Add more default questions here as needed
+        };
+    }
+
+    // Rest of your methods (Get3Questions, GetAns) go here
+}
 
 public class QuestionList
 {
