@@ -1,4 +1,42 @@
 - 👋 Hi, I’m @Arkapravo2001
+
+
+public class QuestionList
+{
+    private List<Question> Questions { get; set; }
+
+    public QuestionList()
+    {
+        // Initialize your list of questions (default 10 questions)
+        Questions = new List<Question>
+        {
+            // Add your default 10 questions here
+        };
+    }
+
+    public List<Question> Get3Questions()
+    {
+        Random random = new Random();
+        // Get random 3 questions from the Questions list
+        var randomQuestions = Questions.OrderBy(q => random.Next()).Take(3).ToList();
+        return randomQuestions;
+    }
+
+    public string GetAns(int QID)
+    {
+        // Find the question by QID and return the answer
+        var question = Questions.FirstOrDefault(q => q.QID == QID);
+        if (question != null)
+        {
+            return question.Ans;
+        }
+        else
+        {
+            return null; // Handle the case where the question with given QID is not found
+        }
+    }
+}
+
 public class Question
 {
     public int QID { get; set; }
