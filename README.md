@@ -1,4 +1,16 @@
 - 👋 Hi, I’m @Arkapravo2001
+public class Question
+{
+    public int QID { get; set; }
+    public string Ques { get; set; }
+    public string Option1 { get; set; }
+    public string Option2 { get; set; }
+    public string Option3 { get; set; }
+    public string Option4 { get; set; }
+    public string Ans { get; set; }
+}
+
+
 Exercise: 
 Model:
 Question class (QID, Ques, Option1, Option2, Option3, Option4, Ans )
