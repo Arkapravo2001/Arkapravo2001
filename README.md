@@ -50,77 +50,7 @@ namespace Day33MVC.Models
                 Option4 = "Saturn",
                 Ans = "Mars"
             },
-             new Question()
-            {
-                QID = 4,
-                Ques = "Which planet is known as the Red Planet?",
-                Option1 = "Mars",
-                Option2 = "Venus",
-                Option3 = "Jupiter",
-                Option4 = "Saturn",
-                Ans = "Mars"
-            },
-              new Question()
-            {
-                QID = 5,
-                Ques = "Which planet is known as the Red Planet?",
-                Option1 = "Mars",
-                Option2 = "Venus",
-                Option3 = "Jupiter",
-                Option4 = "Saturn",
-                Ans = "Mars"
-            },
-               new Question()
-            {
-                QID = 6,
-                Ques = "Which planet is known as the Red Planet?",
-                Option1 = "Mars",
-                Option2 = "Venus",
-                Option3 = "Jupiter",
-                Option4 = "Saturn",
-                Ans = "Mars"
-            },
-                new Question()
-            {
-                QID = 7,
-                Ques = "Which planet is known as the Red Planet?",
-                Option1 = "Mars",
-                Option2 = "Venus",
-                Option3 = "Jupiter",
-                Option4 = "Saturn",
-                Ans = "Mars"
-            },
-                 new Question()
-            {
-                QID = 8,
-                Ques = "Which planet is known as the Red Planet?",
-                Option1 = "Mars",
-                Option2 = "Venus",
-                Option3 = "Jupiter",
-                Option4 = "Saturn",
-                Ans = "Mars"
-            },
-                  new Question()
-            {
-                QID = 9,
-                Ques = "Which planet is known as the Red Planet?",
-                Option1 = "Mars",
-                Option2 = "Venus",
-                Option3 = "Jupiter",
-                Option4 = "Saturn",
-                Ans = "Mars"
-            },
-
-                  new Question()
-            {
-                QID = 10,
-                Ques = "Which planet is known as the Red Planet?",
-                Option1 = "Mars",
-                Option2 = "Venus",
-                Option3 = "Jupiter",
-                Option4 = "Saturn",
-                Ans = "Mars"
-            },
+         
             // Add more default questions here as needed
         };
         }
