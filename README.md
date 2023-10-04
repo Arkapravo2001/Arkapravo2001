@@ -1,4 +1,159 @@
 - 👋 Hi, I’m @Arkapravo2001
+using System.Collections.Generic;
+using System;
+using System.Linq;
+
+namespace Day33MVC.Models
+{
+
+    public class QuestionList
+    {
+        private List<Question> Questions { get; set; }
+
+        public QuestionList()
+        {
+            // Initialize your list of questions (default 10 questions)
+         
+            Questions = new List<Question>
+        {
+
+                new Question()
+
+            {
+                QID = 1,
+                Ques = "Which planet is known as the Red Planet?",
+                Option1 = "Mars",
+                Option2 = "Venus",
+                Option3 = "Jupiter",
+                Option4 = "Saturn",
+                Ans = "Mars"
+            },
+
+            new Question() 
+
+            {
+                QID = 2,
+                Ques = "Which planet is known as the Red Planet?",
+                Option1 = "Mars",
+                Option2 = "Venus",
+                Option3 = "Jupiter",
+                Option4 = "Saturn",
+                Ans = "Mars"
+            },
+            new Question()
+            {
+                QID = 3,
+                Ques = "Which planet is known as the Red Planet?",
+                Option1 = "Mars",
+                Option2 = "Venus",
+                Option3 = "Jupiter",
+                Option4 = "Saturn",
+                Ans = "Mars"
+            },
+             new Question()
+            {
+                QID = 4,
+                Ques = "Which planet is known as the Red Planet?",
+                Option1 = "Mars",
+                Option2 = "Venus",
+                Option3 = "Jupiter",
+                Option4 = "Saturn",
+                Ans = "Mars"
+            },
+              new Question()
+            {
+                QID = 5,
+                Ques = "Which planet is known as the Red Planet?",
+                Option1 = "Mars",
+                Option2 = "Venus",
+                Option3 = "Jupiter",
+                Option4 = "Saturn",
+                Ans = "Mars"
+            },
+               new Question()
+            {
+                QID = 6,
+                Ques = "Which planet is known as the Red Planet?",
+                Option1 = "Mars",
+                Option2 = "Venus",
+                Option3 = "Jupiter",
+                Option4 = "Saturn",
+                Ans = "Mars"
+            },
+                new Question()
+            {
+                QID = 7,
+                Ques = "Which planet is known as the Red Planet?",
+                Option1 = "Mars",
+                Option2 = "Venus",
+                Option3 = "Jupiter",
+                Option4 = "Saturn",
+                Ans = "Mars"
+            },
+                 new Question()
+            {
+                QID = 8,
+                Ques = "Which planet is known as the Red Planet?",
+                Option1 = "Mars",
+                Option2 = "Venus",
+                Option3 = "Jupiter",
+                Option4 = "Saturn",
+                Ans = "Mars"
+            },
+                  new Question()
+            {
+                QID = 9,
+                Ques = "Which planet is known as the Red Planet?",
+                Option1 = "Mars",
+                Option2 = "Venus",
+                Option3 = "Jupiter",
+                Option4 = "Saturn",
+                Ans = "Mars"
+            },
+
+                  new Question()
+            {
+                QID = 10,
+                Ques = "Which planet is known as the Red Planet?",
+                Option1 = "Mars",
+                Option2 = "Venus",
+                Option3 = "Jupiter",
+                Option4 = "Saturn",
+                Ans = "Mars"
+            },
+            // Add more default questions here as needed
+        };
+        }
+        
+
+        public List<Question> Get3Questions()
+            {
+                Random random = new Random();
+                // Get random 3 questions from the Questions list
+                var randomQuestions = Questions.OrderBy(q => random.Next()).Take(3).ToList();
+                return randomQuestions;
+            }
+
+            public string GetAns(int QID)
+            {
+                // Find the question by QID and return the answer
+                var question = Questions.FirstOrDefault(q => q.QID == QID);
+                if (question != null)
+                {
+                    return question.Ans;
+                }
+                else
+                {
+                    return null; // Handle the case where the question with given QID is not found
+                }
+            }
+        }
+    }
+
+
+
+
+
 
 public class QuestionList
 {
