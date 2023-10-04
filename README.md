@@ -1,4 +1,11 @@
 - 👋 Hi, I’m @Arkapravo2001
+Exercise: 
+Model:
+Question class (QID, Ques, Option1, Option2, Option3, Option4, Ans )
+QuestionList : 
+Questions: by default has a list of 10 Questions
+List<Question> Get3Questions(){ returns random 3 questions from Questions}
+String getAns(Qid) -> returns the ans from Questions
   
 package pkg4;
 
