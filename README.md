@@ -1,4 +1,102 @@
 - 👋 Hi, I’m @Arkapravo2001
+EmployeeController 
+
+using Day36WebAPI.Model;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Day36WebAPI.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class EmployeeController : ControllerBase
+    {
+        // Get all employees
+        [HttpGet("GetEmps")]
+        public ActionResult<IEnumerable<Employee>> GetEmps()
+        {
+            return Ok(EmpList.Employees);
+        }
+
+        // Get an employee by ID
+        [HttpGet("GetEmp/{eid}")]
+        public ActionResult<Employee> GetEmp(int eid)
+        {
+            var employee = EmpList.Employees.FirstOrDefault(e => e.Eid == eid);
+
+            if (employee == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(employee);
+        }
+
+        // Add a new employee
+        [HttpPost("AddEmp")]
+        public IActionResult AddEmp(Employee employee)
+        {
+            EmpList.Employees.Add(employee);
+            return CreatedAtAction(nameof(GetEmp), new { eid = employee.Eid }, employee);
+        }
+
+        // Delete an employee by ID
+        [HttpDelete("DelEmp/{eid}")]
+        public IActionResult DelEmp(int eid)
+        {
+            var employee = EmpList.Employees.FirstOrDefault(e => e.Eid == eid);
+
+            if (employee == null)
+            {
+                return NotFound();
+            }
+
+            EmpList.Employees.Remove(employee);
+            return NoContent();
+        }
+    }
+}
+
+
+
+
+Emplist.cs
+using System.Collections.Generic;
+
+namespace Day36WebAPI.Model
+{
+    public class EmpList
+    {
+       
+
+
+   
+        public static List<Employee> Employees = new List<Employee>
+    {
+        new Employee { Eid = 1, Ename = "John", Esal = 50000, Eaddress = "123 Main St", Ephone = "555-1234" },
+        new Employee { Eid = 2, Ename = "Jane", Esal = 60000, Eaddress = "456 Elm St", Ephone = "555-5678" },
+        new Employee { Eid = 3, Ename = "Bob", Esal = 55000, Eaddress = "789 Oak St", Ephone = "555-9012" },
+        new Employee { Eid = 4, Ename = "Alice", Esal = 70000, Eaddress = "101 Pine St", Ephone = "555-3456" },
+        new Employee { Eid = 5, Ename = "Eva", Esal = 75000, Eaddress = "202 Cedar St", Ephone = "555-7890" }
+    };
+   
+
+}
+}
+
+Employee.cs
+
+
+public class Employee
+{
+    public int Eid { get; set; }
+    public string Ename { get; set; }
+    public decimal Esal { get; set; }
+    public string Eaddress { get; set; }
+    public string Ephone { get; set; }
+}
+- 
 using System.Collections.Generic;
 using System;
 using System.Linq;
