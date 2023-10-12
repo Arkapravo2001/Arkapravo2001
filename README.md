@@ -1,3 +1,29 @@
+function sum(x: number, y: number): number;
+function sum(x: number, y: number, z: number, p: number): number;
+function sum(x: string, y: string): string;
+function sum(x: number | string, y: number | string, z?: number, p?: number): number | string {
+    if (typeof x === 'number' && typeof y === 'number') {
+        if (typeof z === 'number' && typeof p === 'number') {
+            // Overload with four parameters
+            return x + y + z + p;
+        } else {
+            // Overload with two parameters
+            return x + y;
+        }
+    } else if (typeof x === 'string' && typeof y === 'string') {
+        // Overload with strings
+        return x + y;
+    } else {
+        throw new Error('Invalid parameters');
+    }
+}
+
+// Example usages
+console.log(sum(1, 2)); // Output: 3
+console.log(sum(1, 2, 3, 4)); // Output: 10
+console.log(sum('Hello, ', 'world!')); // Output: Hello, world!
+
+
 - 👋 Hi, I’m @Arkapravo2001
 EmployeeController 
 
